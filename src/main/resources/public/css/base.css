@@ -1,5 +1,33 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,900,300);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300,800);
+.button-container {
+  margin-top: 20vh;
+  margin-bottom: 10vh; }
+
+.button-outer {
+  border-radius: 100%;
+  background-color: #000;
+  height: 25vh;
+  width: 25vh;
+  padding: 1.125vh;
+  margin: 0 auto; }
+
+.button-inner {
+  border-radius: 100%;
+  background-color: red;
+  width: 100%;
+  height: 100%; }
+
+.button-progress {
+  width: 100%;
+  height: 30px;
+  background-color: #000; }
+
+.button-progress-inner {
+  width: 25%;
+  height: 100%;
+  background-color: blue; }
+
 html, button, input, select, textarea,
 .pure-g [class*="pure-u"] {
   font-family: 'Open Sans', sans-serif; }
