@@ -13,9 +13,8 @@ Vue.component('app-container', {
             if (this.count < this.maxCount) {
                 this.count++;
                 this.$http.post("/api/incrementPressCount/").then(res => {
-                    console.log(res.body);
+                    this.count = res.body;
                 });
-                this.fetchPressCount();
             }
         },
         fetchPressCount: function () {
