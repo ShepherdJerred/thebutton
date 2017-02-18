@@ -16,12 +16,16 @@ Vue.component('app-container', {
                     console.log(res.body);
                 });
             }
+        },
+        fetchPressCount: function () {
+            this.$http.get("/api/getPressCount/").then(res => {
+                this.count = res.body;
+                console.log(res.body);
+            });
         }
     },
     created: function () {
-        this.$http.get("/api/getPressCount/").then(res => {
-            this.count = res.body;
-        });
+        this.fetchPressCount();
     }
 });
 
@@ -42,6 +46,10 @@ Vue.component('app-progress', {
             return width;
         }
     }
+});
+
+Vue.component('sj-footer', {
+    template: '<div class="">Site created by <a href="http://shepherdjerred.com">Jerred Shepherd</a></div>'
 });
 
 const app = new Vue({
