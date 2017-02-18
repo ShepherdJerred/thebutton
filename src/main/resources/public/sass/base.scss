@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,900,300);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300,800);
 @import 'button.scss';
+@import 'progress-bar';
 
 html, button, input, select, textarea,
 .pure-g [class *= "pure-u"] {
@@ -16,14 +17,20 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-  color: #00ADB5;
+  color: #08D9D6;
 }
 
 a:hover {
-  color: #00ADB5;
+  color: #08D9D6;
 }
 
 ::selection {
   color: #fff;
   background-color: #393E46;
+}
+
+#app {
+  background-color: #EAEAEA;
+  height: 100vh;
+  width: 100vw;
 }
