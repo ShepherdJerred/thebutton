@@ -11,10 +11,11 @@ import static spark.Spark.*;
 
 public class Main {
 
-
     public static void main(String[] args) {
 
-        port(80);
+        int port = getHerokuAssignedPort();
+
+        port(port);
 
         staticFiles.location("/public");
 
@@ -27,6 +28,14 @@ public class Main {
             return "";
         });
 
+    }
+
+    static int getHerokuAssignedPort() {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 80;
     }
 
     public static void stop() {
