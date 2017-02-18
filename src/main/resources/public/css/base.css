@@ -15,12 +15,12 @@
   background-color: #E84545;
   width: 100%;
   height: 100%;
-  box-shadow: 0 15px 0 0 #e52e2e, 0 20px 0 0 #d1d1d1;
+  box-shadow: 0 15px 0 0 #b11616, 0 20px 0 0 #d1d1d1;
   text-align: center; }
   .button-inner:hover {
-    background-color: #e52e2e; }
+    background-color: #de1c1c; }
   .button-inner:active {
-    background-color: #e42323; }
+    background-color: #c81919; }
 
 .button-text {
   font-size: 24px;
@@ -43,7 +43,7 @@
 .progress-inner {
   width: 0%;
   height: 100%;
-  background-color: #06a8a5;
+  background-color: #00B233;
   text-align: center; }
 
 .progress-text {
@@ -52,7 +52,8 @@
   font-weight: 700;
   position: relative;
   top: 3.5px;
-  margin-left: 5px; }
+  margin-left: 5px;
+  width: 100%; }
 
 html, button, input, select, textarea,
 .pure-g [class*="pure-u"] {

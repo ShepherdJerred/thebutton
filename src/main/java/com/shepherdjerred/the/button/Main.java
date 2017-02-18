@@ -22,10 +22,10 @@ public class Main {
         Map map = new HashMap();
         get("/", (rq, rs) -> new ModelAndView(map, "index"), new ThymeleafTemplateEngine());
 
-        get("/api/currentBumpCount", (req, res) -> "1");
-        post("/api/incrementBumpCount", (req, res) -> {
-
-            return "";
+        get("/api/getPressCount/", (req, res) -> "10");
+        post("/api/incrementPressCount/", (req, res) -> {
+            // Update database here
+            return "Success";
         });
 
     }

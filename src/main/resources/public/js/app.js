@@ -12,8 +12,16 @@ Vue.component('app-container', {
         increment: function () {
             if (this.count < this.maxCount) {
                 this.count++;
+                this.$http.post("/api/incrementPressCount/").then(res => {
+                    console.log(res.body);
+                });
             }
         }
+    },
+    created: function () {
+        this.$http.get("/api/getPressCount/").then(res => {
+            this.count = res.body;
+        });
     }
 });
 
