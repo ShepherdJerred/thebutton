@@ -15,6 +15,7 @@ Vue.component('app-container', {
                 this.$http.post("/api/incrementPressCount/").then(res => {
                     console.log(res.body);
                 });
+                this.fetchPressCount();
             }
         },
         fetchPressCount: function () {
