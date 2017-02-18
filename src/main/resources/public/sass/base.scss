@@ -2,6 +2,7 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300,800);
 @import 'button.scss';
 @import 'progress-bar';
+@import 'footer';
 
 html, button, input, select, textarea,
 .pure-g [class *= "pure-u"] {
@@ -14,6 +15,10 @@ h1, h2, h3, h4, h5, h6 {
 
 p, h1, h2, h3, h4, h5, h6 {
   margin: 0;
+}
+
+.content {
+  min-height: calc(100vh - 77px);
 }
 
 a {
