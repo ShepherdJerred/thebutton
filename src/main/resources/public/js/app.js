@@ -52,6 +52,6 @@ Vue.component('sj-footer', {
     template: '<div class="pure-u-1 footer"><div class="pure-u-1-2"><div class="attribution">Site created by <a href="http://shepherdjerred.com">Jerred Shepherd</a></div></div></div>'
 });
 
-const app = new Vue({
+var app = new Vue({
     el: '#app'
 });
