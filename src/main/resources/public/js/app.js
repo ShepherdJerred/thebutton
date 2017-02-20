@@ -41,7 +41,7 @@ Vue.component('app-progress', {
             return Math.round(this.count / this.maxCount * 100);
         },
         width: function () {
-            let width = {};
+            var width = {};
             width.width = this.percent + '%';
             return width;
         }
