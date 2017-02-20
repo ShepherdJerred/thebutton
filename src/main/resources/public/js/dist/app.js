@@ -10,26 +10,25 @@ Vue.component('app-container', {
     },
     methods: {
         increment: function increment() {
-            var _this = this;
-
             if (this.count < this.maxCount) {
                 this.count++;
                 this.$http.post("/api/incrementPressCount/").then(function (res) {
-                    _this.count = res.body;
+                    console.log(res.body);
                 });
             }
         },
         fetchPressCount: function fetchPressCount() {
-            var _this2 = this;
+            var _this = this;
 
             this.$http.get("/api/getPressCount/").then(function (res) {
-                _this2.count = res.body;
+                _this.count = res.body;
                 console.log(res.body);
             });
         }
     },
     created: function created() {
         this.fetchPressCount();
+        setInterval(this.fetchPressCount, 1000);
     }
 });
 
@@ -59,12 +58,6 @@ Vue.component('sj-footer', {
 var app = new Vue({
     el: '#app'
 });
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
 
 //# sourceMappingURL=app.js.map
 
