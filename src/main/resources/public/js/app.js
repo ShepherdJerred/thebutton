@@ -5,7 +5,7 @@ Vue.component('app-container', {
     data: function () {
         return {
             count: 0,
-            maxCount: 1000000000
+            maxCount: 100000
         }
     },
     methods: {

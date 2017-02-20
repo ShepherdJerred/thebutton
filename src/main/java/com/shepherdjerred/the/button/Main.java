@@ -73,7 +73,7 @@ public class Main {
         counter = counterDAO.load(COUNTER_UUID);
 
         if (counter == null) {
-            counter = new Counter(COUNTER_UUID, 0, 1000000000);
+            counter = new Counter(COUNTER_UUID, 0, 100000);
             counterDAO.insert(counter);
         }
     }
