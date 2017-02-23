@@ -72,8 +72,8 @@ Vue.component('app-users', {
             var _this2 = this;
 
             this.$http.get("/api/getActiveUsers/").then(function (res) {
-                if (res.body > _this2.count) {
-                    _this2.count = res.body;
+                if (res.body > _this2.users) {
+                    _this2.users = res.body;
                 }
                 console.log(res.body);
             });
@@ -101,8 +101,6 @@ Vue.component('sj-footer', {
 var app = new Vue({
     el: '#app'
 });
-
-//# sourceMappingURL=app.js.map
 
 //# sourceMappingURL=app.js.map
 

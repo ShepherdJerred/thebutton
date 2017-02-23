@@ -68,8 +68,8 @@ Vue.component('app-users', {
     methods: {
         fetchUsers: function () {
             this.$http.get("/api/getActiveUsers/").then(res => {
-                if (res.body > this.count) {
-                    this.count = res.body;
+                if (res.body > this.users) {
+                    this.users = res.body;
                 }
                 console.log(res.body);
             });
