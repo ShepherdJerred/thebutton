@@ -21,7 +21,9 @@ Vue.component('app-container', {
             var _this = this;
 
             this.$http.get("/api/getPressCount/").then(function (res) {
-                _this.count = res.body;
+                if (res.body > _this.count) {
+                    _this.count = res.body;
+                }
                 console.log(res.body);
             });
         }
@@ -58,16 +60,6 @@ Vue.component('sj-footer', {
 var app = new Vue({
     el: '#app'
 });
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
 
 //# sourceMappingURL=app.js.map
 

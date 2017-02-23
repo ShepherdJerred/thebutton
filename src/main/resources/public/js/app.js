@@ -19,7 +19,9 @@ Vue.component('app-container', {
         },
         fetchPressCount: function () {
             this.$http.get("/api/getPressCount/").then(res => {
-                this.count = res.body;
+                if (res.body > this.count) {
+                    this.count = res.body;
+                }
                 console.log(res.body);
             });
         }
@@ -42,7 +44,7 @@ Vue.component('app-progress', {
             return Math.round(this.count / this.maxCount * 100);
         },
         width: function () {
-            var width = {};
+            let width = {};
             width.width = this.percent + '%';
             return width;
         }
