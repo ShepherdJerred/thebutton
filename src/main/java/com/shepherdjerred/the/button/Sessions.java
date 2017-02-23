@@ -21,7 +21,7 @@ public class Sessions {
 
     private static void trim() {
         for (Session session : activeSessions) {
-            if (session.lastAccessedTime() > NUMBER_OF_MILLIS_IN_30_SECONDS) {
+            if (System.currentTimeMillis() - session.lastAccessedTime()  > NUMBER_OF_MILLIS_IN_30_SECONDS) {
                 activeSessions.remove(session);
             }
         }
