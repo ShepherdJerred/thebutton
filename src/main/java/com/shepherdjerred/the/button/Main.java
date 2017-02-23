@@ -31,6 +31,7 @@ public class Main {
         setupDatabase();
         loadCounter();
         setupRoutes();
+        Sessions.startTrimLoop();
     }
 
     private static void setupPort() {
@@ -88,6 +89,9 @@ public class Main {
 
         // TODO Rate limit
         post("/api/incrementPressCount/", (req, res) -> {
+            if (req.session().isNew()) {
+                Sessions.addToSessions(req.session(true));
+            }
             counter.incrementCount();
             counterDAO.updateCount(counter);
             return counter.getCount();
