@@ -97,7 +97,7 @@ public class Main {
             return counter.getCount();
         });
 
-        get("/api/getSessionCount/", (req, res) -> Sessions.getActiveSessionCount());
+        get("/api/getActiveUsers/", (req, res) -> Sessions.getActiveSessionCount());
     }
 
     private static int getHerokuAssignedPort() {

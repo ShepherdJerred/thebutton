@@ -38,8 +38,15 @@ Vue.component('app-button', {
 
 Vue.component('app-progress', {
     props: ['count', 'maxCount'],
-    template: '<div class="progress-container"><div class="progress-background"><div class="progress-inner" :style="width"><span class="progress-text">{{ count }}</span></div></div></div>',
+    template: '<div class="progress-container"><div class="progress-background"><div class="progress-inner" :style="width"><span class="progress-text">{{ displayCount }}</span></div></div></div>',
     computed: {
+        displayCount: function () {
+            if (this.count === 0) {
+                return "";
+            } else {
+                return this.count;
+            }
+        },
         percent: function () {
             return Math.round(this.count / this.maxCount * 100);
         },
@@ -48,6 +55,34 @@ Vue.component('app-progress', {
             width.width = this.percent + '%';
             return width;
         }
+    }
+});
+
+Vue.component('app-users', {
+    template: '<div class="active-users"><p>There are {{ otherUsers }} others clicking right now</p></div>',
+    data: function () {
+        return {
+            users: 0,
+        }
+    },
+    methods: {
+        fetchUsers: function () {
+            this.$http.get("/api/getActiveUsers/").then(res => {
+                if (res.body > this.count) {
+                    this.count = res.body;
+                }
+                console.log(res.body);
+            });
+        }
+    },
+    computed: {
+        otherUsers: function () {
+            return this.users - 1;
+        }
+    },
+    created: function () {
+        this.fetchUsers();
+        setInterval(this.fetchUsers, 5000);
     }
 });
 
