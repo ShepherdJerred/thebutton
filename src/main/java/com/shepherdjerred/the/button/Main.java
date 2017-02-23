@@ -92,6 +92,8 @@ public class Main {
             counterDAO.updateCount(counter);
             return counter.getCount();
         });
+
+        get("/api/getSessionCount/", (req, res) -> Sessions.getActiveSessionCount());
     }
 
     private static int getHerokuAssignedPort() {
