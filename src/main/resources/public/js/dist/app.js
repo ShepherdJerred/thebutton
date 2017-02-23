@@ -40,8 +40,15 @@ Vue.component('app-button', {
 
 Vue.component('app-progress', {
     props: ['count', 'maxCount'],
-    template: '<div class="progress-container"><div class="progress-background"><div class="progress-inner" :style="width"><span class="progress-text">{{ count }}</span></div></div></div>',
+    template: '<div class="progress-container"><div class="progress-background"><div class="progress-inner" :style="width"><span class="progress-text">{{ displayCount }}</span></div></div></div>',
     computed: {
+        displayCount: function displayCount() {
+            if (this.count === 0) {
+                return "";
+            } else {
+                return this.count;
+            }
+        },
         percent: function percent() {
             return Math.round(this.count / this.maxCount * 100);
         },
@@ -53,6 +60,36 @@ Vue.component('app-progress', {
     }
 });
 
+Vue.component('app-users', {
+    template: '<div class="active-users"><p>There are {{ otherUsers }} others clicking right now</p></div>',
+    data: function data() {
+        return {
+            users: 0
+        };
+    },
+    methods: {
+        fetchUsers: function fetchUsers() {
+            var _this2 = this;
+
+            this.$http.get("/api/getActiveUsers/").then(function (res) {
+                if (res.body > _this2.count) {
+                    _this2.count = res.body;
+                }
+                console.log(res.body);
+            });
+        }
+    },
+    computed: {
+        otherUsers: function otherUsers() {
+            return this.users - 1;
+        }
+    },
+    created: function created() {
+        this.fetchUsers();
+        setInterval(this.fetchUsers, 5000);
+    }
+});
+
 Vue.component('sj-footer', {
     template: '<div class="pure-u-1 footer"><div class="pure-u-1-2"><div class="attribution">Site created by <a href="http://shepherdjerred.com">Jerred Shepherd</a></div></div></div>'
 });
@@ -60,6 +97,12 @@ Vue.component('sj-footer', {
 var app = new Vue({
     el: '#app'
 });
+
+//# sourceMappingURL=app.js.map
+
+//# sourceMappingURL=app.js.map
+
+//# sourceMappingURL=app.js.map
 
 //# sourceMappingURL=app.js.map
 
