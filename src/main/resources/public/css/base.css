@@ -66,6 +66,10 @@
       text-decoration: none;
       color: #fff; }
 
+.active-users {
+  text-align: center;
+  margin-top: 15px; }
+
 html, button, input, select, textarea,
 .pure-g [class*="pure-u"] {
   font-family: 'Open Sans', sans-serif; }

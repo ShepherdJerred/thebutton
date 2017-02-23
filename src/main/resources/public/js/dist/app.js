@@ -81,7 +81,11 @@ Vue.component('app-users', {
     },
     computed: {
         otherUsers: function otherUsers() {
-            return this.users - 1;
+            if (this.users - 1 < 0) {
+                return 0;
+            } else {
+                return this.users - 1;
+            }
         }
     },
     created: function created() {
@@ -97,16 +101,6 @@ Vue.component('sj-footer', {
 var app = new Vue({
     el: '#app'
 });
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
 
 //# sourceMappingURL=app.js.map
 

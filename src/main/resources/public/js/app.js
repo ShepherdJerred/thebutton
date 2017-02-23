@@ -77,7 +77,11 @@ Vue.component('app-users', {
     },
     computed: {
         otherUsers: function () {
-            return this.users - 1;
+            if (this.users - 1 < 0) {
+                return 0;
+            } else {
+                return this.users - 1;
+            }
         }
     },
     created: function () {
