@@ -23,8 +23,6 @@ public class Sessions {
         for (Session session : activeSessions) {
             if (System.currentTimeMillis() - session.lastAccessedTime() > NUMBER_OF_MILLIS_IN_30_SECONDS) {
                 activeSessions.remove(session);
-            } else {
-                System.out.println(System.currentTimeMillis() - session.lastAccessedTime());
             }
         }
     }
