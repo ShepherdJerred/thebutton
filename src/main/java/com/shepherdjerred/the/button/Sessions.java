@@ -32,7 +32,7 @@ public class Sessions {
             while (true) {
                 try {
                     trim();
-                    Thread.sleep(10 * 1000);
+                    Thread.sleep(NUMBER_OF_MILLIS_IN_30_SECONDS);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
