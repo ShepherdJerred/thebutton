@@ -64,7 +64,7 @@ Vue.component('app-users', {
     template: '<div class="active-users"><p>There <span v-if="otherUsers == 1">is</span><span v-else>are</span> {{ otherUsers }} other<span v-if="otherUsers != 1">s</span> here now</p></div>',
     data: function data() {
         return {
-            users: 0
+            users: 1
         };
     },
     methods: {
