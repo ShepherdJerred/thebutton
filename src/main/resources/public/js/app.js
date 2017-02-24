@@ -101,10 +101,10 @@ const app = new Vue({
     },
     components: {
         thebutton: {
-            template: "<div class='content'><app-container></app-container><app-users></app-users><div class='button' v-on:click='currentView = leaderboard'>Leaderboard</div></div><sj-footer></sj-footer>"
+            template: "<div><div class='content'><app-container></app-container><app-users></app-users><div class='button' v-on:click='currentView = leaderboard'>Leaderboard</div></div><sj-footer></sj-footer></div>"
         },
         leaderboard: {
-            template: "<div class='content'></div><div class='button' v-on:click='currentView = thebutton'>Leaderboard</div><sj-footer></sj-footer>"
+            template: "<div><div class='content'></div><div class='button' v-on:click='currentView = thebutton'>Leaderboard</div><sj-footer></sj-footer></div>"
         }
     }
 });
