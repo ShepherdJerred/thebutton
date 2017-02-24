@@ -1,6 +1,7 @@
 package com.shepherdjerred.the.button;
 
 import com.shepherdjerred.the.button.database.CounterDAO;
+import com.shepherdjerred.the.button.template.thymeleaf.ThymeleafTemplateEngine;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.codejargon.fluentjdbc.api.FluentJdbc;
@@ -97,7 +98,9 @@ public class Main {
             if (req.session().isNew()) {
                 Sessions.addToSessions(req.session(true));
             }
-             return new ModelAndView(map, "index");
+            return new ThymeleafTemplateEngine().render(
+                    new ModelAndView(map, "index")
+            );
         });
 
         get("/api/getPressCount/", (req, res) -> counter.getCount());
