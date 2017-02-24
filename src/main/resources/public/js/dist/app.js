@@ -52,7 +52,7 @@ Vue.component('app-progress', {
         percent: function percent() {
             // Multiply maxCount by 100 so we get a percent
             // Multiply by 10 then divide by 10 so we round to one decimal place
-            return Math.round(this.count / this.maxCount * 100 * 10 / 10);
+            return Math.round(this.count / this.maxCount * 100 * 10) / 10;
         },
         width: function width() {
             var width = {};
@@ -124,5 +124,7 @@ var router = new VueRouter({
 var app = new Vue({
     router: router
 }).$mount("#app");
+
+//# sourceMappingURL=app.js.map
 
 //# sourceMappingURL=app.js.map

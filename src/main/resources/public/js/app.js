@@ -50,7 +50,7 @@ Vue.component('app-progress', {
         percent: function () {
             // Multiply maxCount by 100 so we get a percent
             // Multiply by 10 then divide by 10 so we round to one decimal place
-            return Math.round((this.count / this.maxCount * 100 * 10) / 10);
+            return Math.round((this.count / this.maxCount * 100 * 10)) / 10;
         },
         width: function () {
             let width = {};
