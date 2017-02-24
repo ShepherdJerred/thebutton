@@ -26,6 +26,8 @@ public class Main {
     private static Counter counter;
     private static CounterDAO counterDAO;
 
+    private static boolean databaseEnabled;
+
     public static void main(String[] args) {
         setupPort();
         setupDatabase();
@@ -42,40 +44,49 @@ public class Main {
     private static void setupDatabase() {
         String jdbcUrl = getHerokuJdbcUrl();
 
-        HikariConfig hikariConfig = new HikariConfig();
-        hikariConfig.setJdbcUrl(jdbcUrl);
-        hikariConfig.setPoolName("button");
-        hikariConfig.setMaximumPoolSize(5);
-        hikariConfig.addDataSourceProperty("cachePrepStmts", true);
-        hikariConfig.addDataSourceProperty("prepStmtCacheSize", 250);
-        hikariConfig.addDataSourceProperty("prepStmtCacheSqlLimit", 2048);
-        hikariConfig.addDataSourceProperty("userServerPrepStmt", true);
-        hikariConfig.addDataSourceProperty("dumpQueriesOnException", true);
+        if (databaseEnabled) {
+            HikariConfig hikariConfig = new HikariConfig();
+            hikariConfig.setJdbcUrl(jdbcUrl);
+            hikariConfig.setPoolName("button");
+            hikariConfig.setMaximumPoolSize(5);
+            hikariConfig.addDataSourceProperty("cachePrepStmts", true);
+            hikariConfig.addDataSourceProperty("prepStmtCacheSize", 250);
+            hikariConfig.addDataSourceProperty("prepStmtCacheSqlLimit", 2048);
+            hikariConfig.addDataSourceProperty("userServerPrepStmt", true);
+            hikariConfig.addDataSourceProperty("dumpQueriesOnException", true);
 
-        hikariDataSource = new HikariDataSource(hikariConfig);
-        fluentJdbc = new FluentJdbcBuilder().connectionProvider(hikariDataSource).build();
+            hikariDataSource = new HikariDataSource(hikariConfig);
+            fluentJdbc = new FluentJdbcBuilder().connectionProvider(hikariDataSource).build();
 
-        Flyway flyway = new Flyway();
-        flyway.setDataSource(hikariDataSource);
-        flyway.migrate();
+            Flyway flyway = new Flyway();
+            flyway.setDataSource(hikariDataSource);
+            flyway.migrate();
 
-        counterDAO = new CounterDAO(fluentJdbc);
+            counterDAO = new CounterDAO(fluentJdbc);
+        }
     }
 
     private static String getHerokuJdbcUrl() {
         ProcessBuilder processBuilder = new ProcessBuilder();
         if (processBuilder.environment().get("CLEARDB_DATABASE_URL") != null) {
+            databaseEnabled = true;
             return "jdbc:" + processBuilder.environment().get("CLEARDB_DATABASE_URL");
+        } else {
+            databaseEnabled = false;
+            return null;
         }
-        return "";
     }
 
     private static void loadCounter() {
-        counter = counterDAO.load(COUNTER_UUID);
+        if (databaseEnabled) {
+            counter = counterDAO.load(COUNTER_UUID);
 
-        if (counter == null) {
+            if (counter == null) {
+                counter = new Counter(COUNTER_UUID, 0, 100000);
+                counterDAO.insert(counter);
+            }
+        } else {
             counter = new Counter(COUNTER_UUID, 0, 100000);
-            counterDAO.insert(counter);
         }
     }
 
@@ -93,7 +104,9 @@ public class Main {
                 Sessions.addToSessions(req.session(true));
             }
             counter.incrementCount();
-            counterDAO.updateCount(counter);
+            if (databaseEnabled) {
+                counterDAO.updateCount(counter);
+            }
             return counter.getCount();
         });
 
