@@ -59,7 +59,7 @@ Vue.component('app-progress', {
 });
 
 Vue.component('app-users', {
-    template: '<div class="active-users"><p>There are {{ otherUsers }} others clicking right now</p></div>',
+    template: '<div class="active-users"><p>There <span v-if="otherUsers == 1">is</span><span v-else=>are</span> {{ otherUsers }} other<span v-if="otherUsers != 1">s</span> clicking right now</p></div>',
     data: function () {
         return {
             users: 0,
@@ -95,5 +95,16 @@ Vue.component('sj-footer', {
 });
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+        currentView: 'Button'
+    }
 });
+
+const Button = {
+    template: '<div class="content"><app-container></app-container><app-users></app-users></div><sj-footer></sj-footer>'
+};
+
+const Leaderboard = {
+    template: '<h1>LeaderboarD</h1>'
+}
