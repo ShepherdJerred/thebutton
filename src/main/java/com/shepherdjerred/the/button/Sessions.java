@@ -20,9 +20,13 @@ public class Sessions {
     }
 
     private static void trim() {
-        for (Session session : activeSessions) {
+        Set<Session> newSet = new HashSet<>(activeSessions);
+
+        for (Session session : newSet) {
             if (System.currentTimeMillis() - session.lastAccessedTime() > NUMBER_OF_MILLIS_IN_30_SECONDS) {
                 activeSessions.remove(session);
+            } else {
+                System.out.println(System.currentTimeMillis() - session.lastAccessedTime());
             }
         }
     }
@@ -31,6 +35,7 @@ public class Sessions {
         new Thread(() -> {
             while (true) {
                 try {
+                    System.out.println("Trimming");
                     trim();
                     Thread.sleep(NUMBER_OF_MILLIS_IN_30_SECONDS);
                 } catch (InterruptedException e) {

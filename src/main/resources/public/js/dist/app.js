@@ -61,7 +61,7 @@ Vue.component('app-progress', {
 });
 
 Vue.component('app-users', {
-    template: '<div class="active-users"><p>There <span v-if="otherUsers == 1">is</span><span v-else>are</span> {{ otherUsers }} other<span v-if="otherUsers != 1">s</span> clicking right now</p></div>',
+    template: '<div class="active-users"><p>There <span v-if="otherUsers == 1">is</span><span v-else>are</span> {{ otherUsers }} other<span v-if="otherUsers != 1">s</span> here now</p></div>',
     data: function data() {
         return {
             users: 0
@@ -81,7 +81,7 @@ Vue.component('app-users', {
     },
     computed: {
         otherUsers: function otherUsers() {
-            if (this.users == 0) {
+            if (this.users == 0 || this.users == 1) {
                 return 0;
             } else {
                 return this.users - 1;
@@ -125,79 +125,5 @@ var router = new VueRouter({
 var app = new Vue({
     router: router
 }).$mount("#app");
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
 
 //# sourceMappingURL=app.js.map
