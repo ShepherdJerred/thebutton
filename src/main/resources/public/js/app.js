@@ -77,11 +77,7 @@ Vue.component('app-users', {
     },
     computed: {
         otherUsers: function () {
-            if (this.users == 0 || this.users == 1) {
-                return 0;
-            } else {
-                return this.users - 1;
-            }
+            return this.users - 1;
         }
     },
     created: function () {
@@ -113,8 +109,8 @@ const leaderboard = {
 };
 
 const routes = [
-    { path: '/', component: thebutton },
-    { path: '/leaderboard', component: leaderboard }
+    {path: '/', component: thebutton},
+    {path: '/leaderboard', component: leaderboard}
 ];
 
 const router = new VueRouter({

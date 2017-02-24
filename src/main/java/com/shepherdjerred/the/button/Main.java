@@ -1,7 +1,6 @@
 package com.shepherdjerred.the.button;
 
 import com.shepherdjerred.the.button.database.CounterDAO;
-import com.shepherdjerred.the.button.template.thymeleaf.ThymeleafTemplateEngine;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.codejargon.fluentjdbc.api.FluentJdbc;
@@ -94,15 +93,17 @@ public class Main {
         staticFiles.location("/public");
 
         Map map = new HashMap();
-        get("/", (rq, rs) -> new ModelAndView(map, "index"), new ThymeleafTemplateEngine());
+        get("/", (req, res) -> {
+            if (req.session().isNew()) {
+                Sessions.addToSessions(req.session(true));
+            }
+             return new ModelAndView(map, "index");
+        });
 
         get("/api/getPressCount/", (req, res) -> counter.getCount());
 
         // TODO Rate limit
         post("/api/incrementPressCount/", (req, res) -> {
-            if (req.session().isNew()) {
-                Sessions.addToSessions(req.session(true));
-            }
             counter.incrementCount();
             if (databaseEnabled) {
                 counterDAO.updateCount(counter);
