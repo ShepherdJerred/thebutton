@@ -24,7 +24,7 @@ Vue.component('app-container', {
                 if (res.body > _this.count) {
                     _this.count = res.body;
                 }
-                console.log(res.body);
+                console.log("Count" + res.body);
             });
         }
     },
@@ -72,10 +72,8 @@ Vue.component('app-users', {
             var _this2 = this;
 
             this.$http.get("/api/getActiveUsers/").then(function (res) {
-                if (res.body > _this2.users) {
-                    _this2.users = res.body;
-                }
-                console.log(res.body);
+                _this2.users = res.body;
+                console.log("Users: " + res.body);
             });
         }
     },
@@ -121,16 +119,6 @@ var router = new VueRouter({
 var app = new Vue({
     router: router
 }).$mount("#app");
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
 
 //# sourceMappingURL=app.js.map
 

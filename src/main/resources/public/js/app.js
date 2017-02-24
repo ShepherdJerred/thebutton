@@ -22,7 +22,7 @@ Vue.component('app-container', {
                 if (res.body > this.count) {
                     this.count = res.body;
                 }
-                console.log(res.body);
+                console.log("Count" + res.body);
             });
         }
     },
@@ -68,10 +68,8 @@ Vue.component('app-users', {
     methods: {
         fetchUsers: function () {
             this.$http.get("/api/getActiveUsers/").then(res => {
-                if (res.body > this.users) {
-                    this.users = res.body;
-                }
-                console.log(res.body);
+                this.users = res.body;
+                console.log("Users: " + res.body);
             });
         }
     },
