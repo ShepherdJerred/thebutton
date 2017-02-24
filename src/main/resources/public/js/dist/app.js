@@ -108,7 +108,7 @@ Vue.component('sj-footer', {
 });
 
 var thebutton = {
-    template: "<div><app-container></app-container><app-users></app-users><div class='pure-u-1'><div class='link-wrapper'><router-link to='/leaderboard' class='button'>Leaderboard</router-link></div></div></div>"
+    template: "<div><app-container></app-container><div class='pure-u-1'><app-users></app-users></div><div class='pure-u-1'><div class='link-wrapper'><router-link to='/leaderboard' class='button'>Leaderboard</router-link></div></div></div>"
 
 };
 
