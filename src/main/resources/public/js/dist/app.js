@@ -108,12 +108,12 @@ Vue.component('sj-footer', {
 });
 
 var thebutton = {
-    template: "<div class='pure-u-1'><app-container></app-container><app-users></app-users><div class='link-wrapper'><router-link to='/leaderboard' class='button'>Leaderboard</router-link></div></div>"
+    template: "<div><app-container></app-container><app-users></app-users><div class='link-wrapper'><router-link to='/leaderboard' class='button'>Leaderboard</router-link></div></div>"
 
 };
 
 var leaderboard = {
-    template: "<div class='pure-u-1'><app-leaderboard></app-leaderboard><div class='link-wrapper'><router-link to='/' class='button'>Back to The Button</router-link></div></div>"
+    template: "<div><app-leaderboard></app-leaderboard><div class='link-wrapper'><router-link to='/' class='button'>Back to The Button</router-link></div></div>"
 };
 
 var routes = [{ path: '/', component: thebutton }, { path: '/leaderboard', component: leaderboard }];
@@ -125,8 +125,6 @@ var router = new VueRouter({
 var app = new Vue({
     router: router
 }).$mount("#app");
-
-//# sourceMappingURL=app.js.map
 
 //# sourceMappingURL=app.js.map
 
