@@ -48,7 +48,9 @@ Vue.component('app-progress', {
             }
         },
         percent: function () {
-            return Math.round(this.count / this.maxCount * 100);
+            // Multiply maxCount by 100 so we get a percent
+            // Multiply by 10 then divide by 10 so we round to one decimal place
+            return Math.round((this.count / this.maxCount * 100 * 10) / 10);
         },
         width: function () {
             let width = {};
@@ -75,6 +77,9 @@ Vue.component('app-users', {
     },
     computed: {
         otherUsers: function () {
+            if (this.users == 0) {
+                return 0;
+            }
             return this.users - 1;
         }
     },
