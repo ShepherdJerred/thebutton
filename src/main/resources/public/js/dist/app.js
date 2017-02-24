@@ -98,20 +98,25 @@ Vue.component('sj-footer', {
     template: '<div class="pure-u-1 footer"><div class="pure-u-1-2"><div class="attribution">Site created by <a href="http://shepherdjerred.com">Jerred Shepherd</a></div></div></div>'
 });
 
-var app = new Vue({
-    el: '#app',
-    data: {
-        currentView: 'thebutton'
-    },
-    components: {
-        thebutton: {
-            template: "<div><div class='content'><app-container></app-container><app-users></app-users><div class='button' v-on:click='currentView = leaderboard'>Leaderboard</div></div><sj-footer></sj-footer></div>"
-        },
-        leaderboard: {
-            template: "<div><div class='content'></div><div class='button' v-on:click='currentView = thebutton'>Leaderboard</div><sj-footer></sj-footer></div>"
-        }
-    }
+var thebutton = {
+    template: "<div><div class='content'><app-container></app-container><app-users></app-users><router-link to='/leaderboard' class='button'>Leaderboard</router-link></div><sj-footer></sj-footer></div>"
+};
+
+var leaderboard = {
+    template: "<div><div class='content'></div><router-link to='/' class='button'>Leaderboard</router-link><sj-footer></sj-footer></div>"
+};
+
+var routes = [{ path: '/', component: thebutton }, { path: '/leaderboard', component: leaderboard }];
+
+var router = new VueRouter({
+    routes: routes
 });
+
+var app = new Vue({
+    router: router
+}).$mount("#app");
+
+//# sourceMappingURL=app.js.map
 
 //# sourceMappingURL=app.js.map
 
