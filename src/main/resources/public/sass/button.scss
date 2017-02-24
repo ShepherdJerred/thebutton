@@ -3,8 +3,16 @@
 }
 
 .button {
+  margin-top: 10px;
   background-color: #000;
   color: #fff;
   border-radius: 5px;
   padding: 15px 10px;
+
+  a {
+    text-decoration: none;
+    &:hover, &:focus, &:active {
+      text-decoration: none;
+    }
+  }
 }

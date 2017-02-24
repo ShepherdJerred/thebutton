@@ -74,10 +74,15 @@
   text-align: center; }
 
 .button {
+  margin-top: 10px;
   background-color: #000;
   color: #fff;
   border-radius: 5px;
   padding: 15px 10px; }
+  .button a {
+    text-decoration: none; }
+    .button a:hover, .button a:focus, .button a:active {
+      text-decoration: none; }
 
 html, button, input, select, textarea,
 .pure-g [class*="pure-u"] {
