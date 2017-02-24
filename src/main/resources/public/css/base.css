@@ -70,6 +70,15 @@
   text-align: center;
   margin-top: 15px; }
 
+.link-wrapper {
+  text-align: center; }
+
+.button {
+  background-color: #000;
+  color: #fff;
+  border-radius: 5px;
+  padding: 15px 10px; }
+
 html, button, input, select, textarea,
 .pure-g [class*="pure-u"] {
   font-family: 'Open Sans', sans-serif; }
