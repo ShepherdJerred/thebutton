@@ -99,11 +99,11 @@ Vue.component('sj-footer', {
 });
 
 var thebutton = {
-    template: "<div><div class='content'><app-container></app-container><app-users></app-users><a href='/leaderboard' class='button'>Leaderboard</a></div><sj-footer></sj-footer></div>"
+    template: "<div><div class='content'><app-container></app-container><app-users></app-users><v-link href='/leaderboard' class='button'>Leaderboard</v-link></div><sj-footer></sj-footer></div>"
 };
 
 var leaderboard = {
-    template: "<div><div class='content'></div><a href='/' class='button'>Leaderboard</a><sj-footer></sj-footer></div>"
+    template: "<div><div class='content'></div><v-link href='/' class='button'>Leaderboard</v-link><sj-footer></sj-footer></div>"
 };
 
 var routes = {
@@ -125,10 +125,6 @@ new Vue({
         return h(this.ViewComponent);
     }
 });
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
 
 //# sourceMappingURL=app.js.map
 

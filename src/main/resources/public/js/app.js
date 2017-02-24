@@ -95,11 +95,11 @@ Vue.component('sj-footer', {
 });
 
 const thebutton = {
-    template: "<div><div class='content'><app-container></app-container><app-users></app-users><a href='/leaderboard' class='button'>Leaderboard</a></div><sj-footer></sj-footer></div>"
+    template: "<div><div class='content'><app-container></app-container><app-users></app-users><v-link href='/leaderboard' class='button'>Leaderboard</v-link></div><sj-footer></sj-footer></div>"
 };
 
 const leaderboard = {
-    template: "<div><div class='content'></div><a href='/' class='button'>Leaderboard</a><sj-footer></sj-footer></div>"
+    template: "<div><div class='content'></div><v-link href='/' class='button'>Leaderboard</v-link><sj-footer></sj-footer></div>"
 };
 
 const routes = {
@@ -117,5 +117,7 @@ new Vue({
             return routes[this.currentRoute] || "Not Found"
         }
     },
-    render (h) { return h(this.ViewComponent) }
+    render (h) {
+        return h(this.ViewComponent)
+    }
 })
