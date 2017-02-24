@@ -61,7 +61,7 @@ Vue.component('app-progress', {
 });
 
 Vue.component('app-users', {
-    template: '<div class="active-users"><p>There <span v-if="otherUsers == 1">is</span><span v-else=>are</span> {{ otherUsers }} other<span v-if="otherUsers != 1">s</span> clicking right now</p></div>',
+    template: '<div class="active-users"><p>There <span v-if="otherUsers == 1">is</span><span v-else>are</span> {{ otherUsers }} other<span v-if="otherUsers != 1">s</span> clicking right now</p></div>',
     data: function data() {
         return {
             users: 0
@@ -99,11 +99,11 @@ Vue.component('sj-footer', {
 });
 
 var thebutton = {
-    template: "<div><div class='content'><app-container></app-container><app-users></app-users><v-link href='/leaderboard' class='button'>Leaderboard</v-link></div><sj-footer></sj-footer></div>"
+    template: "<div><div class='content'><app-container></app-container><app-users></app-users><a href='leaderboard' class='button'>Leaderboard</a></div><sj-footer></sj-footer></div>"
 };
 
 var leaderboard = {
-    template: "<div><div class='content'></div><v-link href='/' class='button'>Leaderboard</v-link><sj-footer></sj-footer></div>"
+    template: "<div><div class='content'></div><a href='/' class='button'>Leaderboard</a><sj-footer></sj-footer></div>"
 };
 
 var routes = {
@@ -111,18 +111,10 @@ var routes = {
     '/leaderboard': leaderboard
 };
 
-new Vue({
+var app = new Vue({
     el: '#app',
     data: {
-        currentRoute: window.location.pathname
-    },
-    computed: {
-        ViewComponent: function ViewComponent() {
-            return routes[this.currentRoute] || "Not Found";
-        }
-    },
-    render: function render(h) {
-        return h(this.ViewComponent);
+        currentView: 'thebutton'
     }
 });
 
