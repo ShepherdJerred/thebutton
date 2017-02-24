@@ -77,7 +77,7 @@ Vue.component('app-users', {
     },
     computed: {
         otherUsers: function () {
-            if (this.users - 1 < 0) {
+            if (this.users == 0) {
                 return 0;
             } else {
                 return this.users - 1;
