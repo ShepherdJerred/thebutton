@@ -1,58 +1,101 @@
-/*
-Error: File to import not found or unreadable: th-ebutton.
-        on line 3 of base.scss
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,900,300);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300,800);
+.button-container {
+  margin-top: 20vh;
+  margin-bottom: 15vh; }
 
-1: @import url(https://fonts.googleapis.com/css?family=Lato:400,700,900,300);
-2: @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300,800);
-3: @import 'th-ebutton';
-4: @import 'progress-bar';
-5: @import 'footer';
-6: @import 'users';
-7: 
-8: html, button, input, select, textarea,
+.button-outer {
+  border-radius: 100%;
+  height: 25vh;
+  width: 25vh;
+  margin: 0 auto; }
 
-Backtrace:
-base.scss:3
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/import_node.rb:67:in `rescue in import'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/import_node.rb:45:in `import'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/import_node.rb:28:in `imported_file'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/import_node.rb:37:in `css_import?'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:313:in `visit_import'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `visit'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:79:in `block in with_base'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:115:in `with_frame'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:79:in `with_base'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `visit'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:52:in `map'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:169:in `block in visit_children'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:168:in `visit_children'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:188:in `visit_root'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `visit'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:159:in `visit'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:8:in `visit'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/root_node.rb:36:in `css_tree'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:381:in `_render_with_sourcemap'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:298:in `render_with_sourcemap'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:209:in `each'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/plugin.rb:82:in `update_stylesheets'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/exec/sass_scss.rb:340:in `watch_or_update'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/exec/sass_scss.rb:51:in `process_result'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/exec/base.rb:52:in `parse'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/lib/sass/exec/base.rb:19:in `parse!'
-C:/Program Files/Ruby23-x64/lib/ruby/gems/2.3.0/gems/sass-3.4.23/bin/scss:13:in `<top (required)>'
-C:/Program Files/Ruby23-x64/bin/scss:22:in `load'
-C:/Program Files/Ruby23-x64/bin/scss:22:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: File to import not found or unreadable: th-ebutton.\A         on line 3 of base.scss\A \A 1: @import url(https://fonts.googleapis.com/css?family=Lato:400,700,900,300);\A 2: @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300,800);\A 3: @import 'th-ebutton';\A 4: @import 'progress-bar';\A 5: @import 'footer';\A 6: @import 'users';\A 7: \A 8: html, button, input, select, textarea,"; }
+.button-inner {
+  border-radius: 100%;
+  background-color: #E84545;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 15px 0 0 #b11616, 0 20px 0 0 #d1d1d1;
+  text-align: center; }
+  .button-inner:hover {
+    background-color: #de1c1c; }
+  .button-inner:active {
+    background-color: #c81919; }
+
+.button-text {
+  font-size: 24px;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 25vh; }
+
+.progress-container {
+  border-radius: 5px;
+  overflow: hidden; }
+
+.progress-background {
+  width: 100%;
+  height: 30px;
+  background-color: #252A34; }
+
+.progress-inner {
+  width: 0%;
+  height: 100%;
+  background-color: #00B233;
+  text-align: center; }
+
+.progress-text {
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  position: relative;
+  top: 3.5px;
+  margin-left: 5px;
+  width: 100%; }
+
+.footer {
+  text-align: center;
+  background-color: #323940;
+  color: #fff;
+  font-size: 12px; }
+  .footer .attribution {
+    padding: 30px 0; }
+    .footer .attribution a {
+      text-decoration: none;
+      color: #fff; }
+
+.active-users {
+  text-align: center;
+  margin-top: 15px; }
+
+html, button, input, select, textarea,
+.pure-g [class*="pure-u"] {
+  font-family: 'Open Sans', sans-serif; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lato', sans-serif; }
+
+p, h1, h2, h3, h4, h5, h6 {
+  margin: 0; }
+
+.content {
+  min-height: calc(100vh - 77px); }
+
+a {
+  color: #08D9D6; }
+
+a:hover {
+  color: #08D9D6; }
+
+::selection {
+  color: #fff;
+  background-color: #393E46; }
+
+#app {
+  background-color: #EAEAEA;
+  height: 100vh;
+  width: 100vw; }
+
+/*# sourceMappingURL=base.css.map */
