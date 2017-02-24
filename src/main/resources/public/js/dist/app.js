@@ -1,7 +1,7 @@
 "use strict";
 
 Vue.component('app-container', {
-    template: '<div class="pure-g"><div class="pure-u-1-4"></div><div class="pure-u-1-2"><div v-on:click="increment"><app-button :count="count"></app-button></div><app-progress :count="count" :maxCount="maxCount"></app-progress></div></div>',
+    template: '<div class="pure-u-1-4"></div><div class="pure-u-1-2"><div v-on:click="increment"><app-button :count="count"></app-button></div><app-progress :count="count" :maxCount="maxCount"></app-progress></div>',
     data: function data() {
         return {
             count: 0,
@@ -94,16 +94,26 @@ Vue.component('app-users', {
     }
 });
 
+Vue.component('app-leaderboard', {
+    template: '<div class="pure-u-1"><h1>Leaderboard</h1><table></table></div>',
+    data: function data() {
+        return {
+            users: ['AAA', 'BBB']
+        };
+    }
+});
+
 Vue.component('sj-footer', {
-    template: '<div class="pure-u-1 footer"><div class="pure-u-1-2"><div class="attribution">Site created by <a href="http://shepherdjerred.com">Jerred Shepherd</a></div></div></div>'
+    template: "<div class='pure-u-1 footer'><div class='pure-u-1-2'><div class='attribution'>Site created by <a href='http://shepherdjerred.com'>Jerred Shepherd</a></div></div></div>"
 });
 
 var thebutton = {
-    template: "<div><div class='content'><app-container></app-container><app-users></app-users><router-link to='/leaderboard' class='button'>Leaderboard</router-link></div><sj-footer></sj-footer></div>"
+    template: "<div><app-container></app-container><app-users></app-users><div class='link-wrapper'><router-link to='/leaderboard' class='button'>Leaderboard</router-link></div></div>"
+
 };
 
 var leaderboard = {
-    template: "<div><div class='content'></div><router-link to='/' class='button'>Leaderboard</router-link><sj-footer></sj-footer></div>"
+    template: "<div><app-leaderboard></app-leaderboard><div class='link-wrapper'><router-link to='/' class='button'>Back to The Button</router-link></div></div>"
 };
 
 var routes = [{ path: '/', component: thebutton }, { path: '/leaderboard', component: leaderboard }];
@@ -115,21 +125,5 @@ var router = new VueRouter({
 var app = new Vue({
     router: router
 }).$mount("#app");
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
 
 //# sourceMappingURL=app.js.map
