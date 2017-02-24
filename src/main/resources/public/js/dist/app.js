@@ -1,7 +1,7 @@
 "use strict";
 
 Vue.component('app-container', {
-    template: '<div class="pure-u-1-4"></div><div class="pure-u-1-2"><div v-on:click="increment"><app-button :count="count"></app-button></div><app-progress :count="count" :maxCount="maxCount"></app-progress></div>',
+    template: '<div><div class="pure-u-1-4"></div><div class="pure-u-1-2"><div v-on:click="increment"><app-button :count="count"></app-button></div><app-progress :count="count" :maxCount="maxCount"></app-progress></div></div>',
     data: function data() {
         return {
             count: 0,
@@ -125,6 +125,8 @@ var router = new VueRouter({
 var app = new Vue({
     router: router
 }).$mount("#app");
+
+//# sourceMappingURL=app.js.map
 
 //# sourceMappingURL=app.js.map
 
