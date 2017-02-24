@@ -14,12 +14,12 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="#08D9D6"/>
 
-    <link rel="icon" href="img/favicon.ico">
-    <link rel="icon" sizes="192x192" href="img/highres.png">
+    <link rel="icon" href="/img/favicon.ico">
+    <link rel="icon" sizes="192x192" href="/img/highres.png">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.2/pure-min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.2/grids-responsive-min.css">
-    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="/css/base.css">
 
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/vue-resource@1.2.0/dist/vue-resource.min.js"></script>
@@ -46,10 +46,10 @@
 
 <body>
 <div id="app">
-
+    <component v-bind:is="currentView"></component>
 </div>
 
-<script src="js/dist/app.js"></script>
+<script src="/js/dist/app.js"></script>
 </body>
 
 </html>

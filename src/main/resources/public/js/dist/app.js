@@ -101,19 +101,17 @@ Vue.component('sj-footer', {
 var app = new Vue({
     el: '#app',
     data: {
-        currentView: 'Button'
+        currentView: 'thebutton'
+    },
+    components: {
+        thebutton: {
+            template: "<div class='content'><app-container></app-container><app-users></app-users><div class='button' v-on:click='currentView = leaderboard'>Leaderboard</div></div><sj-footer></sj-footer>"
+        },
+        leaderboard: {
+            template: "<div class='content'></div><div class='button' v-on:click='currentView = thebutton'>Leaderboard</div><sj-footer></sj-footer>"
+        }
     }
 });
-
-var Button = {
-    template: '<div class="content"><app-container></app-container><app-users></app-users></div><sj-footer></sj-footer>'
-};
-
-var Leaderboard = {
-    template: '<h1>LeaderboarD</h1>'
-};
-
-//# sourceMappingURL=app.js.map
 
 //# sourceMappingURL=app.js.map
 
