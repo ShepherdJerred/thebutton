@@ -24,7 +24,7 @@ Vue.component('app-container', {
                 if (res.body > _this.count) {
                     _this.count = res.body;
                 }
-                console.log("Count" + res.body);
+                console.log("Count: " + res.body);
             });
         }
     },
