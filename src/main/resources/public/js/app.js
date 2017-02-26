@@ -141,7 +141,8 @@ Vue.component('sj-footer', {
             Site created by <a href='http://shepherdjerred.com'>Jerred Shepherd</a>
         </div>
     </div>
-</div>`
+</div>
+`
 });
 
 const thebutton = {

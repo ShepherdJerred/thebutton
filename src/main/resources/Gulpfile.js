@@ -1,14 +1,16 @@
+"use strict";
+
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const babel = require('gulp-babel');
 
-gulp.task('styles', function () {
+gulp.task('styles', () => {
     gulp.src('public/sass/**/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('./public/css/'));
 });
 
-gulp.task('watchStyles', function () {
+gulp.task('watchStyles', () => {
     gulp.watch('public/sass/**/*.scss', ['styles']);
 });
 
@@ -19,3 +21,5 @@ gulp.task('scripts', () => {
         }))
         .pipe(gulp.dest('public/js/dist'));
 });
+
+gulp.task('build', ["styles", "scripts"]);

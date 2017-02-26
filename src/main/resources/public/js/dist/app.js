@@ -103,7 +103,7 @@ Vue.component('app-leaderboard', {
 });
 
 Vue.component('sj-footer', {
-    template: "\n<div class='pure-u-1 footer'>\n    <div class='pure-u-1-2'>\n        <div class='attribution'>\n            Site created by <a href='http://shepherdjerred.com'>Jerred Shepherd</a>\n        </div>\n    </div>\n</div>"
+    template: "\n<div class='pure-u-1 footer'>\n    <div class='pure-u-1-2'>\n        <div class='attribution'>\n            Site created by <a href='http://shepherdjerred.com'>Jerred Shepherd</a>\n        </div>\n    </div>\n</div>\n"
 });
 
 var thebutton = {
