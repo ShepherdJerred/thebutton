@@ -55,6 +55,7 @@
                 <configuration>
                     <nodeVersion>v7.6.0</nodeVersion>
                     <installDirectory>target</installDirectory>
+                    <workingDirectory>src/main/resources</workingDirectory>
                 </configuration>
                 <executions>
                     <execution>
@@ -75,7 +76,6 @@
                             <goal>gulp</goal>
                         </goals>
                         <configuration>
-                            <workingDirectory>src/main/resources</workingDirectory>
                             <arguments>build</arguments>
                         </configuration>
                     </execution>
