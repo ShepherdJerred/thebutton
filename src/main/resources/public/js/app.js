@@ -1,7 +1,17 @@
 "use strict";
 
 Vue.component('app-container', {
-    template: '<div><div class="pure-u-1-4"></div><div class="pure-u-1-2"><div v-on:click="increment"><app-button :count="count"></app-button></div><app-progress :count="count" :maxCount="maxCount"></app-progress></div></div>',
+    template: `
+<div>
+    <div class="pure-u-1-4"></div>
+    <div class="pure-u-1-2">
+        <div v-on:click="increment">
+            <app-button :count="count"/>
+        </div>
+        <app-progress :count="count" :maxCount="maxCount"/>
+    </div>
+</div>
+`,
     data: function () {
         return {
             count: 0,
@@ -33,12 +43,28 @@ Vue.component('app-container', {
 });
 
 Vue.component('app-button', {
-    template: '<div class="button-container"><div class="button-outer"><div class="button-inner"></div></div></div>'
+    template: `
+<div class="button-container">
+    <div class="button-outer">
+        <div class="button-inner"></div>
+    </div>
+</div>
+`
 });
 
 Vue.component('app-progress', {
     props: ['count', 'maxCount'],
-    template: '<div class="progress-container"><div class="progress-background"><div class="progress-inner" :style="width"><span class="progress-text">{{ displayCount }}</span></div></div></div>',
+    template: `
+<div class="progress-container">
+    <div class="progress-background">
+        <div class="progress-inner" :style="width">
+            <span class="progress-text">
+                {{ displayCount }}
+            </span>
+        </div>
+    </div>
+</div>
+`,
     computed: {
         displayCount: function () {
             if (this.count === 0) {
@@ -61,7 +87,11 @@ Vue.component('app-progress', {
 });
 
 Vue.component('app-users', {
-    template: '<div class="active-users"><p>There <span v-if="otherUsers == 1">is</span><span v-else>are</span> {{ otherUsers }} other<span v-if="otherUsers != 1">s</span> here now</p></div>',
+    template: `
+<div class="active-users">
+    <p>There <span v-if="otherUsers == 1">is</span><span v-else>are</span> {{ otherUsers }} other<span v-if="otherUsers != 1">s</span> here now</p>
+</div>
+`,
     data: function () {
         return {
             users: 1,
@@ -90,7 +120,12 @@ Vue.component('app-users', {
 });
 
 Vue.component('app-leaderboard', {
-    template: '<div class="pure-u-1"><h1>Leaderboard</h1><table></table></div>',
+    template: `
+<div class="pure-u-1">
+    <h1>Leaderboard</h1>
+    <table></table>
+</div>
+`,
     data: function () {
         return {
             users: ['AAA', 'BBB'],
@@ -99,16 +134,38 @@ Vue.component('app-leaderboard', {
 });
 
 Vue.component('sj-footer', {
-    template: "<div class='pure-u-1 footer'><div class='pure-u-1-2'><div class='attribution'>Site created by <a href='http://shepherdjerred.com'>Jerred Shepherd</a></div></div></div>"
+    template: `
+<div class='pure-u-1 footer'>
+    <div class='pure-u-1-2'>
+        <div class='attribution'>
+            Site created by <a href='http://shepherdjerred.com'>Jerred Shepherd</a>
+        </div>
+    </div>
+</div>`
 });
 
 const thebutton = {
-    template: "<div><app-container></app-container><div class='pure-u-1'><app-users></app-users></div><div class='pure-u-1'></div></div>"
-
+    template: `
+<div>
+    <app-container/>
+        <div class='pure-u-1'>
+            <app-users/>
+        </div>
+</div>
+`
 };
 
 const leaderboard = {
-    template: "<div><app-leaderboard></app-leaderboard><div class='pure-u-1'><div class='link-wrapper'><router-link to='/' class='button'>Back to The Button</router-link></div></div></div>"
+    template: `
+<div>
+    <app-leaderboard/>
+    <div class='pure-u-1'>
+        <div class='link-wrapper'>
+            <router-link to='/' class='button'>Back to The Button</router-link>
+        </div>
+    </div>
+</div>
+`
 };
 
 const routes = [
