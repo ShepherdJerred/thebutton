@@ -124,7 +124,3 @@ var router = new VueRouter({
 var app = new Vue({
     router: router
 }).$mount("#app");
-
-//# sourceMappingURL=app.js.map
-
-//# sourceMappingURL=app.js.map
