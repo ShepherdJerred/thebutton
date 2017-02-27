@@ -4,8 +4,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
 
-import SjFooter from './components/SjFooter.vue';
-
+import App from './views/App.vue';
 import TheButton from './views/TheButton.vue';
 import Leaderboard from './views/Leaderboard.vue';
 
@@ -28,8 +27,5 @@ const router = new VueRouter({
 });
 
 const app = new Vue({
-    router,
-    components: {
-        SjFooter
-    }
+    router
 }).$mount("#app");
