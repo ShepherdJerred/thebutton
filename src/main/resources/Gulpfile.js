@@ -5,7 +5,8 @@ const sass = require('gulp-sass');
 const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
 const cleanCSS = require('gulp-clean-css');
-
+const browserify = require('gulp-browserify');
+const vueify = require('vueify');
 
 gulp.task('styles', () => {
     gulp.src('public/sass/**/*.scss')
@@ -27,4 +28,12 @@ gulp.task('scripts', () => {
         .pipe(gulp.dest('public/js/dist'));
 });
 
-gulp.task('build', ["styles", "scripts"]);
+gulp.task("vue", () => {
+    return gulp.src('public/js/app.js')
+        .pipe(browserify({
+            transform: [vueify]
+        }))
+        .pipe(gulp.dest('public/js/dist'));
+});
+
+gulp.task('build', ["styles", "vue"]);
