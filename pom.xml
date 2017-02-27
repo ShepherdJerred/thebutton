@@ -7,6 +7,7 @@
     <groupId>com.shepherdjerred</groupId>
     <artifactId>the-button</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <description>A webapp made with Vue and Spark</description>
 
     <build>
         <resources>
@@ -79,13 +80,10 @@
                         </goals>
                     </execution>
                     <execution>
-                        <id>gulp build</id>
+                        <id>webpack build</id>
                         <goals>
-                            <goal>gulp</goal>
+                            <goal>webpack</goal>
                         </goals>
-                        <configuration>
-                            <arguments>build</arguments>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>

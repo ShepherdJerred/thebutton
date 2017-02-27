@@ -1,15 +1,15 @@
 "use strict";
 
-const Vue = require('vue/dist/vue.common.js');
-const VueRouter = require('vue-router');
-const VueResource = require('vue-resource');
+import Vue from 'vue';
+import VueRouter from'vue-router';
+import VueResource from'vue-resource';
 
-const AppButton = require('./components/AppButton.vue');
-const AppContainer = require('./components/AppContainer.vue');
-const AppLeaderboard = require('./components/AppLeaderboard.vue');
-const AppProgress = require('./components/AppProgress.vue');
-const AppUsers = require('./components/AppUsers.vue');
-const SjFooter = require('./components/SjFooter.vue');
+import AppButton from'./components/AppButton.vue';
+import AppContainer from'./components/AppContainer.vue';
+import AppLeaderboard from'./components/AppLeaderboard.vue';
+import AppProgress from'./components/AppProgress.vue';
+import AppUsers from'./components/AppUsers.vue';
+import SjFooter from'./components/SjFooter.vue';
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
@@ -48,5 +48,13 @@ const router = new VueRouter({
 });
 
 const app = new Vue({
-    router
+    router,
+    components: {
+        AppButton,
+        AppContainer,
+        AppLeaderboard,
+        AppProgress,
+        AppUsers,
+        SjFooter
+    }
 }).$mount("#app");

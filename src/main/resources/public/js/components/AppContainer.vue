@@ -15,6 +15,10 @@
     import AppProgress from 'AppProgress.vue';
 
     export default {
+        components: {
+            AppButton,
+            AppProgress
+        },
         data: function () {
             return {
                 count: 0,

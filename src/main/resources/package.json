@@ -2,7 +2,8 @@
   "name": "the-button",
   "version": "1.0.0",
   "author": "Jerred Shepherd",
-  "license": "GNU GPL v3",
+  "license": "GPL-3.0",
+  "description": "A webapp made with Vue and Spark",
   "repository": {
     "type": "git",
     "url": "https://github.com/ShepherdJerred/thebutton/"
@@ -10,19 +11,20 @@
   "bugs": {
     "url": "https://github.com/ShepherdJerred/thebutton/issues"
   },
+  "scripts": {
+    "build": "webpack"
+  },
   "homepage": "https://github.com/ShepherdJerred/thebutton/",
   "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
     "babel-preset-es2015": "^6.22.0",
-    "browserify": "^14.1.0",
-    "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
-    "gulp-browserify": "^0.5.1",
-    "gulp-clean-css": "^3.0.3",
-    "gulp-sass": "^3.1.0",
-    "gulp-uglify": "^2.0.1",
+    "css-loader": "^0.26.2",
     "vue": "^2.2.1",
+    "vue-loader": "^11.1.3",
     "vue-resource": "^1.2.0",
     "vue-router": "^2.3.0",
-    "vueify": "^9.4.0"
+    "vue-template-compiler": "^2.2.1",
+    "webpack": "^2.2.1"
   }
 }
