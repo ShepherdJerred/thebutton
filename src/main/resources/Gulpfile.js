@@ -12,7 +12,7 @@ const babelify = require('babelify');
 const vueify = require('vueify');
 const uglifyify = require('uglifyify');
 
-gulp.task('image', function () {
+gulp.task('images', function () {
     gulp.src('src/img/*')
         .pipe(image())
         .pipe(gulp.dest('./public/img'));
@@ -38,4 +38,4 @@ gulp.task('app', () => {
         .pipe(gulp.dest('public/js'));
 });
 
-gulp.task('build', ["styles", "app"]);
+gulp.task('build', ["images", "styles", "app"]);
