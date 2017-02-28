@@ -1,6 +1,6 @@
 "use strict";
 
-import Vue from 'vue/dist/vue.common.js';
+import Vue from 'vue/dist/vue.common';
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
 
