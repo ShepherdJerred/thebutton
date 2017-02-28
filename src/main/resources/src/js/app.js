@@ -4,6 +4,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
 
+import App from './views/App.vue';
 import TheButton from './views/TheButton.vue';
 import Leaderboard from './views/Leaderboard.vue';
 
@@ -27,5 +28,5 @@ const router = new VueRouter({
 
 const app = new Vue({
     router,
-    render: h => h(TheButton)
+    render: h => h(App)
 }).$mount("#app");

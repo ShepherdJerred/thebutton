@@ -5,11 +5,10 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 const cleanCSS = require('gulp-clean-css');
 
-const babel = require('gulp-babel');
 const browserify = require('gulp-browserify');
-const vueify = require('vueify');
 const babelify = require('babelify');
-const uglify = require('gulp-uglify');
+const vueify = require('vueify');
+const uglifyify = require('uglifyify');
 
 gulp.task('styles', () => {
     return gulp.src('src/sass/**/*.scss')
@@ -19,12 +18,14 @@ gulp.task('styles', () => {
 });
 
 gulp.task('app', () => {
+    process.env.NODE_ENV = 'production';
     return gulp.src('src/js/app.js')
-        .pipe(babel({
-            presets: ['es2015']
-        }))
         .pipe(browserify({
-            transform: [babelify, [{_flags: {debug: true}}, vueify]],
+            transform: [
+                babelify,
+                [{_flags: {debug: true}}, vueify],
+                uglifyify
+            ],
         }))
         .pipe(gulp.dest('public/js'));
 });
