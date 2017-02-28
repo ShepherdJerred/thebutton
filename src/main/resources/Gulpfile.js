@@ -11,20 +11,18 @@ const vueify = require('vueify');
 const uglify = require('gulp-uglify');
 
 gulp.task('styles', () => {
-    gulp.src('src/sass/**/*.scss')
+    return gulp.src('src/sass/**/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(gulp.dest('public/css'));
 });
 
-gulp.task("app", () => {
+gulp.task('app', () => {
     return gulp.src('src/js/app.js')
         .pipe(babel({
             presets: ['es2015']
         }))
-        .pipe(browserify({
-            transform: [[{_flags: {debug: true}}, vueify]]
-        }))
+        .pipe(uglify())
         .pipe(gulp.dest('public/js'));
 });
 
