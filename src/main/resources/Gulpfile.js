@@ -8,6 +8,7 @@ const cleanCSS = require('gulp-clean-css');
 const babel = require('gulp-babel');
 const browserify = require('gulp-browserify');
 const vueify = require('vueify');
+const babelify = require('babelify');
 const uglify = require('gulp-uglify');
 
 gulp.task('styles', () => {
@@ -22,7 +23,9 @@ gulp.task('app', () => {
         .pipe(babel({
             presets: ['es2015']
         }))
-        .pipe(uglify())
+        .pipe(browserify({
+            transform: [babelify, [{_flags: {debug: true}}, vueify]],
+        }))
         .pipe(gulp.dest('public/js'));
 });
 
