@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class='pure-u-1'>
-            <div class="active-users">
+            <div class="active-users" v-if="otherUsers != 0">
                 <p>There <span v-if="otherUsers == 1">is</span><span v-else>are</span> {{ otherUsers }} other<span
                         v-if="otherUsers != 1">s</span> here now</p>
             </div>

@@ -1,6 +1,5 @@
 package com.shepherdjerred.the.button;
 
-import com.rollbar.Rollbar;
 import com.shepherdjerred.the.button.database.CounterDAO;
 import com.shepherdjerred.the.button.template.thymeleaf.ThymeleafTemplateEngine;
 import com.zaxxer.hikari.HikariConfig;
@@ -26,27 +25,15 @@ public class Main {
     private static FluentJdbc fluentJdbc;
     private static Counter counter;
     private static CounterDAO counterDAO;
-    private static Rollbar rollbar;
 
     private static boolean databaseEnabled;
 
     public static void main(String[] args) {
-        setupRollbar();
         setupPort();
         setupDatabase();
         loadCounter();
         setupRoutes();
         Sessions.startTrimLoop();
-    }
-
-    private static void setupRollbar() {
-        ProcessBuilder processBuilder = new ProcessBuilder();
-        if (processBuilder.environment().get("ROLLBAR_ACCESS_TOKEN") != null && processBuilder.environment().get("ROLLBAR_ENDPOINT") != null) {
-            String accessToken = processBuilder.environment().get("ROLLBAR_ACCESS_TOKEN");
-            String endPoint = processBuilder.environment().get("ROLLBAR_ENDPOINT");
-            rollbar = new Rollbar(accessToken, endPoint);
-            rollbar.handleUncaughtErrors();
-        }
     }
 
     private static void setupPort() {
@@ -120,9 +107,11 @@ public class Main {
 
         // TODO Rate limit
         post("/api/incrementPressCount/", (req, res) -> {
-            counter.incrementCount();
-            if (databaseEnabled) {
-                counterDAO.updateCount(counter);
+            if (counter.getCount() != counter.getMaxCount()) {
+                counter.incrementCount();
+                if (databaseEnabled) {
+                    counterDAO.updateCount(counter);
+                }
             }
             return counter.getCount();
         });

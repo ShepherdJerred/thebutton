@@ -15,7 +15,9 @@ public class Counter {
     }
 
     public void incrementCount() {
-        count++;
+        if (count != maxCount) {
+            count++;
+        }
     }
 
     public UUID getUuid() {
