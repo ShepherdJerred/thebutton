@@ -19,7 +19,7 @@ import static spark.Spark.*;
 public class Main {
 
     // This is our counters UUID. We use this to store the counter in the database
-    private static final UUID COUNTER_UUID = UUID.fromString("00000000-0000-0000-0000-000000000000");
+    private static final UUID COUNTER_UUID = UUID.fromString("00000000-0000-0000-0000-000000000001");
 
     private static HikariDataSource hikariDataSource;
     private static FluentJdbc fluentJdbc;
