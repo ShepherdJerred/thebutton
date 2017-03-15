@@ -48,7 +48,7 @@ public class Main {
             HikariConfig hikariConfig = new HikariConfig();
             hikariConfig.setJdbcUrl(jdbcUrl);
             hikariConfig.setPoolName("button");
-            hikariConfig.setMaximumPoolSize(5);
+            hikariConfig.setMaximumPoolSize(3);
             hikariConfig.addDataSourceProperty("cachePrepStmts", true);
             hikariConfig.addDataSourceProperty("prepStmtCacheSize", 250);
             hikariConfig.addDataSourceProperty("prepStmtCacheSqlLimit", 2048);
