@@ -68,9 +68,9 @@ public class Main {
 
     private static String getHerokuJdbcUrl() {
         ProcessBuilder processBuilder = new ProcessBuilder();
-        if (processBuilder.environment().get("CLEARDB_DATABASE_URL") != null) {
+        if (processBuilder.environment().get("DATABASE_URL") != null) {
             databaseEnabled = true;
-            return "jdbc:" + processBuilder.environment().get("CLEARDB_DATABASE_URL");
+            return "jdbc:" + processBuilder.environment().get("DATABASE_URL");
         } else {
             databaseEnabled = false;
             return null;
