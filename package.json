@@ -1,0 +1,35 @@
+{
+  "name": "thebutton",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShepherdJerred/thebutton.git"
+  },
+  "author": "Jerred Shepherd",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ShepherdJerred/thebutton/issues"
+  },
+  "homepage": "https://github.com/ShepherdJerred/thebutton",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongodb": "^3.0.1",
+    "nodemon": "^1.14.3"
+  },
+  "devDependencies": {
+    "eslint": "^4.14.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "semistandard": "^11.0.0"
+  }
+}
