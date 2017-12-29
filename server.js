@@ -1,19 +1,29 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const database = require('config/database');
+const mysql = require('mysql');
+const mysqlConfig = require('./config/database');
 
-const MongoClient = require('mongodb').MongoClient;
-const app = express();
-const port = 8080;
+const connection = mysql.createConnection(mysqlConfig);
+connection.connect();
 
-app.use(bodyParser.urlencoded({ extended: true }));
-
-MongoClient.connect('mongodb://' + database.host + ':' + database.port, (error, db) => {
+connection.query('CREATE TABLE IF NOT EXISTS setting (setting_key VARCHAR(255), setting_value VARCHAR(255))', [], function (error, results, fields) {
   if (error) {
-    return console.log(error);
+    throw error;
   }
-  require('./app/routes')(app, db);
-  app.listen(port, () => {
-    console.log('Now listening on port ' + port + '!');
-  });
+});
+
+connection.query('CREATE TABLE IF NOT EXISTS counter (counter_uuid CHAR(36), current_value INT, max_value INT)', [], function (error, results, fields) {
+  if (error) {
+    throw error;
+  }
+});
+
+const app = express();
+const port = process.env.PORT || 8080;
+
+require('./app/routes')(app, connection);
+
+app.use(bodyParser.urlencoded({extended: true}));
+app.listen(port, () => {
+  console.log('Now listening on port ' + port + '!');
 });

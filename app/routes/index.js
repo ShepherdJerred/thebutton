@@ -1,5 +1,5 @@
-const counterRoutes = require('./counter-routes');
+const counterRoutes = require('./counter');
 
-module.exports = function (app, database) {
-  counterRoutes(app, database);
+module.exports = function (app, connection) {
+  counterRoutes(app, connection);
 };
