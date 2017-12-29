@@ -65,14 +65,12 @@ module.exports = function (app, connection) {
             res.status(500).send(error.code);
             throw error;
           }
-          connection.query('UPDATE counter SET max_value = ? WHERE counter_uuid = ?', [counter.max_value * 2, counter.counter_uuid], function (error, results, fields) {
+          counter.max_value = counter.max_value * 2;
+          connection.query('UPDATE counter SET max_value = ? WHERE counter_uuid = ?', [counter.max_value, counter.counter_uuid], function (error, results, fields) {
             if (error) {
               res.status(500).send(error.code);
               throw error;
             }
-            res.send({
-              counter: counter
-            });
           });
         });
       }
