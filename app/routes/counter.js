@@ -60,62 +60,32 @@ module.exports = function (app, connection) {
         max_value: results[0].max_value
       };
       if (counter.current_value === counter.max_value) {
-        console.log('Max is reached');
         connection.query('SELECT * FROM setting WHERE setting_key = ?', ['active_counter'], function (error, results, fields) {
           if (error) {
             res.status(500).send(error.code);
             throw error;
           }
-          if (results[0].setting_value === counter.counter_uuid) {
-            console.log('Newer needs to be inserted');
-            let newCounter = {
-              counter_uuid: uuid(),
-              current_value: 0,
-              max_value: counter.max_value * 2
-            };
-            counter = newCounter;
-            connection.query('INSERT INTO counter VALUES (?, ?, ?)', [newCounter.counter_uuid, newCounter.current_value, newCounter.max_value], function (error, results, fields) {
-              if (error) {
-                res.status(500).send(error.code);
-                throw error;
-              }
-            });
-            connection.query('UPDATE setting SET setting_value = ? WHERE setting_key = ?', [newCounter.counter_uuid, 'active_counter'], function (error, results, fields) {
-              if (error) {
-                res.status(500).send(error.code);
-                throw error;
-              }
-            });
+          connection.query('UPDATE counter SET max_value = ? WHERE counter_uuid = ?', [counter.max_value * 2, counter.counter_uuid], function (error, results, fields) {
+            if (error) {
+              res.status(500).send(error.code);
+              throw error;
+            }
             res.send({
-              newer_counter: true,
               counter: counter
             });
-          } else {
-            connection.query('SELECT * FROM counter WHERE counter_uuid = ?', [results[0].setting_value], function (error, results, fields) {
-              if (error) {
-                res.status(500).send(error.code);
-                throw error;
-              }
-              res.send({
-                newer_counter: true,
-                counter: results[0]
-              });
-            });
-          }
-        });
-      } else {
-        counter.current_value = counter.current_value + 1;
-        connection.query('UPDATE counter SET current_value = ? WHERE counter_uuid = ?', [counter.current_value, counter.counter_uuid], function (error, results, fields) {
-          if (error) {
-            res.status(500).send(error.code);
-            throw error;
-          }
-          res.send({
-            newer_counter: false,
-            counter: counter
           });
         });
       }
+      counter.current_value = counter.current_value + 1;
+      connection.query('UPDATE counter SET current_value = ? WHERE counter_uuid = ?', [counter.current_value, counter.counter_uuid], function (error, results, fields) {
+        if (error) {
+          res.status(500).send(error.code);
+          throw error;
+        }
+        res.send({
+          counter: counter
+        });
+      });
     });
   });
 };
