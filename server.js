@@ -27,7 +27,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-require('./app/routes')(app, connection);
+require('./src/routes')(app, connection);
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.listen(port, () => {
