@@ -1,22 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mysql = require('mysql');
-const mysqlConfig = require('./config/database');
 
-const connection = mysql.createConnection(mysqlConfig);
-connection.connect();
+const database = require('./src/database');
 
-connection.query('CREATE TABLE IF NOT EXISTS setting (setting_key VARCHAR(255), setting_value VARCHAR(255))', [], function (error, results, fields) {
-  if (error) {
-    throw error;
-  }
-});
-
-connection.query('CREATE TABLE IF NOT EXISTS counter (counter_uuid CHAR(36), current_value INT, max_value INT)', [], function (error, results, fields) {
-  if (error) {
-    throw error;
-  }
-});
+let connection = database.connect();
+database.migrate(connection);
 
 const app = express();
 const port = process.env.PORT || 8080;
