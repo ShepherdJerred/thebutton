@@ -1,36 +1,44 @@
 const uuid = require('uuid/v4');
 const CounterDao = require('../../src/database/dao/counterDao');
+const SettingDao = require('../../src/database/dao/settingDao');
 const Counter = require('../../src/models/counter');
+const Setting = require('../../src/models/setting');
 
 module.exports = function (app, connection) {
-  let dao = new CounterDao(connection);
+  let counterDao = new CounterDao(connection);
+  let settingDao = new SettingDao(connection);
+
   app.get('/counter', (req, res) => {
     let counter;
-    let counterUuid = dao.getActiveCounter();
-    console.log("Result: " + counterUuid);
-    if (counterUuid) {
-      counter = dao.select(counterUuid);
-    } else {
-      counter = new Counter(uuid(), 0, 1);
-      dao.create(counter);
-      dao.setAsActiveCounter(counter);
-    }
-    res.send(counter);
+    settingDao.select('active_counter', (counterSetting) => {
+      if (counterSetting) {
+        counterDao.select(counterSetting.settingValue, (selectedCounter) => {
+          counter = selectedCounter;
+          res.send(counter);
+        });
+      } else {
+        counter = new Counter(uuid(), 0, 1);
+        counterDao.insert(counter);
+        settingDao.insert(new Setting('active_counter', counter.uuid));
+        res.send(counter);
+      }
+    });
   });
+
   app.post('/counter', (req, res) => {
     let counter;
-    let counterUuid = dao.getActiveCounter();
+    let counterUuid = settingDao.select('active_counter');
     if (counterUuid) {
-      counter = dao.select(counterUuid);
+      counter = counterDao.select(counterUuid);
     } else {
-      counter = new Counter(uuidv4(), 0, 1);
-      dao.setAsActiveCounter(counter);
+      counter = new Counter(uuid(), 0, 1);
+      settingDao.insert(new Setting('active_counter', counterUuid));
     }
     counter.currentValue++;
-    dao.updateCurrent(counter);
+    counterDao.setCurrentValue(counter);
     if (counter.maxValue < counter.currentValue) {
       counter.maxValue *= 2;
-      dao.updateMax(counter);
+      counterDao.setMaxValue(counter);
     }
     res.send(counter);
   });
