@@ -10,9 +10,10 @@ module.exports = function (app, connection) {
 
   app.get('/counter', (req, res) => {
     let counter;
-    settingDao.select('active_counter', (counterSetting) => {
-      if (counterSetting) {
-        counterDao.select(counterSetting.settingValue, (selectedCounter) => {
+
+    settingDao.select('active_counter', setting => {
+      if (setting) {
+        counterDao.select(setting.settingValue, selectedCounter => {
           counter = selectedCounter;
           res.send(counter);
         });
@@ -27,19 +28,40 @@ module.exports = function (app, connection) {
 
   app.post('/counter', (req, res) => {
     let counter;
-    let counterUuid = settingDao.select('active_counter');
-    if (counterUuid) {
-      counter = counterDao.select(counterUuid);
-    } else {
-      counter = new Counter(uuid(), 0, 1);
-      settingDao.insert(new Setting('active_counter', counterUuid));
-    }
-    counter.currentValue++;
-    counterDao.setCurrentValue(counter);
-    if (counter.maxValue < counter.currentValue) {
-      counter.maxValue *= 2;
-      counterDao.setMaxValue(counter);
-    }
-    res.send(counter);
+    let counterUuid;
+
+    settingDao.select('active_counter', setting => {
+      counterUuid = setting.settingValue;
+
+      if (counterUuid) {
+        counterDao.select(counterUuid, selectedCounter => {
+          counter = selectedCounter;
+          counter.currentValue++;
+          counterDao.setCurrentValue(counter);
+
+          if (counter.maxValue < counter.currentValue) {
+            counter.maxValue *= 2;
+            counterDao.setMaxValue(counter);
+          }
+
+          res.send(counter);
+        });
+      } else {
+        counterUuid = uuid();
+        counter = new Counter(counterUuid, 0, 1);
+        counterDao.insert(counter);
+        settingDao.insert(new Setting('active_counter', counterUuid));
+
+        counter.currentValue++;
+        counterDao.setCurrentValue(counter);
+
+        if (counter.maxValue < counter.currentValue) {
+          counter.maxValue *= 2;
+          counterDao.setMaxValue(counter);
+        }
+
+        res.send(counter);
+      }
+    });
   });
 };
