@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const database = require('./src/database');
+const database = require('./database/index');
 
 let connection = database.connect();
 database.migrate(connection);
@@ -15,7 +15,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-require('./src/routes')(app, connection);
+require('./routes/index')(app, connection);
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.listen(port, () => {

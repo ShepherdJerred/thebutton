@@ -1,4 +1,4 @@
-const Setting = require.main.require('./src/models/setting');
+const Setting = require.main.require('../src/models/setting');
 
 class CounterDao {
   constructor (connection) {
