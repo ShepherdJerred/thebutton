@@ -1,6 +1,6 @@
 const Setting = require.main.require('../src/models/setting');
 
-class CounterDao {
+class SettingDao {
   constructor (connection) {
     this.connection = connection;
   }
@@ -27,4 +27,4 @@ class CounterDao {
   }
 }
 
-module.exports = CounterDao;
+module.exports = SettingDao;
