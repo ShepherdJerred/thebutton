@@ -1,12 +1,10 @@
-const CounterDao = require('../database/dao/counterDao');
 const Counter = require('../models/counter');
-const SettingDao = require('../database/dao/settingDao');
 const Setting = require('../models/setting');
 const uuid = require('uuid/v4');
 
 module.exports = function (database) {
-  let counterDao = new CounterDao(database);
-  let settingDao = new SettingDao(database);
+  const counterDao = require.main.require('./database/dao/counterDao')(database);
+  const settingDao = require.main.require('./database/dao/settingDao')(database);
 
   let getCounter = function getCounter () {
     let counter;

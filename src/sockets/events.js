@@ -3,7 +3,6 @@ module.exports = function (socket, database) {
 
   function getCounter () {
     let counter = controller.getCounter();
-    console.log(counter);
     socket.emit('counterStatus', counter);
   }
 
