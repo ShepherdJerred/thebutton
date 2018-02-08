@@ -1,4 +1,4 @@
-module.exports = function (socket, database) {
+module.exports = function (app, socket, database) {
   let controller = require('./controller')(database);
 
   function getCounter () {
@@ -8,13 +8,14 @@ module.exports = function (socket, database) {
   }
 
   function incrementCounter () {
-    controller.incrementCounter().then((counter) => {
-      socket.emit('counterStatus', counter);
+    controller.incrementCounter().then((result) => {
+      app.sockets.emit('counterStatus', result.counter);
+      if (result.reward) {
+        socket.emit('reward', 'puppy');
+      }
     });
   }
 
-  return {
-    getCounter,
-    incrementCounter
-  };
+  socket.on('getCounter', getCounter);
+  socket.on('incrementCounter', incrementCounter);
 };

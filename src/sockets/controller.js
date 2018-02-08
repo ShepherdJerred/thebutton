@@ -23,6 +23,8 @@ module.exports = function (database) {
 
   let incrementCounter = async function () {
     let counter;
+    // TODO set initial value to false
+    let reward = true;
     let setting = await settingDao.select('active_counter');
 
     if (setting) {
@@ -39,9 +41,13 @@ module.exports = function (database) {
     if (counter.maxValue < counter.currentValue) {
       counter.maxValue *= 2;
       counterDao.setMaxValue(counter);
+      reward = true;
     }
 
-    return counter;
+    return {
+      counter,
+      reward
+    };
   };
 
   return {

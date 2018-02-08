@@ -7,9 +7,7 @@ log.setLevel(log.levels.DEBUG);
 
 require('./database/index').then((connection) => {
   app.on('connection', socket => {
-    let events = require('./sockets/events')(socket, connection);
-    socket.on('getCounter', events.getCounter);
-    socket.on('incrementCounter', events.incrementCounter);
+    require('./sockets/events')(app, socket, connection);
   });
 
   log.info('socket.io is listening on port ' + port);
