@@ -1,5 +1,3 @@
-const log = require('loglevel');
-
 module.exports = function (socket, database) {
   let controller = require('./controller')(database);
 
