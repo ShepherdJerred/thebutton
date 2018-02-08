@@ -1,25 +1,17 @@
 const Setting = require.main.require('./models/setting');
 
-module.exports = function (database) {
-  function select (settingKey, callback) {
-    database.query('SELECT * FROM setting WHERE setting_key = ?', ['active_counter'], (error, results, fields) => {
-      if (error) {
-        throw error;
-      }
-      if (results[0]) {
-        callback(new Setting(results[0]['setting_key'], results[0]['setting_value']));
-      } else {
-        callback(null);
-      }
-    });
+module.exports = function (connection) {
+  async function select (settingKey) {
+    const [rows] = await connection.execute('SELECT * FROM setting WHERE setting_key = ?', [settingKey]);
+    if (rows) {
+      return new Setting(rows[0]['setting_key'], rows[0]['setting_value']);
+    } else {
+      return null;
+    }
   }
 
   function insert (setting) {
-    database.query('INSERT INTO setting VALUES (?, ?)', [setting.settingKey, setting.settingValue], (error, results, fields) => {
-      if (error) {
-        throw error;
-      }
-    });
+    connection.query('INSERT INTO setting VALUES (?, ?)', [setting.settingKey, setting.settingValue]);
   }
 
   return {

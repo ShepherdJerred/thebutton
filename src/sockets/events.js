@@ -1,14 +1,18 @@
+const log = require('loglevel');
+
 module.exports = function (socket, database) {
   let controller = require('./controller')(database);
 
   function getCounter () {
-    let counter = controller.getCounter();
-    socket.emit('counterStatus', counter);
+    controller.getCounter().then((counter) => {
+      socket.emit('counterStatus', counter);
+    });
   }
 
   function incrementCounter () {
-    let counter = controller.incrementCounter();
-    socket.emit('counterStatus', counter);
+    controller.incrementCounter().then((counter) => {
+      socket.emit('counterStatus', counter);
+    });
   }
 
   return {
