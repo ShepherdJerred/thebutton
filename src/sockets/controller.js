@@ -5,6 +5,19 @@ const uuid = require('uuid/v4');
 module.exports = function (database) {
   const counterDao = require.main.require('./database/dao/counterDao')(database);
   const settingDao = require.main.require('./database/dao/settingDao')(database);
+  let connectedUsers = 0;
+
+  let getConnectedUsers = function () {
+    return connectedUsers;
+  };
+
+  let incrementConnectedUsers = function () {
+    connectedUsers += 1;
+  };
+
+  let decrementConnectedUsers = function () {
+    connectedUsers -= 1;
+  };
 
   let getCounter = async function getCounter () {
     let counter;
@@ -50,6 +63,9 @@ module.exports = function (database) {
   };
 
   return {
+    getConnectedUsers,
+    incrementConnectedUsers,
+    decrementConnectedUsers,
     getCounter,
     incrementCounter
   };
