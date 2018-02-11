@@ -23,8 +23,7 @@ module.exports = function (database) {
 
   let incrementCounter = async function () {
     let counter;
-    // TODO set initial value to false
-    let reward = true;
+    let reward = false;
     let setting = await settingDao.select('active_counter');
 
     if (setting) {
