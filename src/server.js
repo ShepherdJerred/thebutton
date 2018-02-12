@@ -8,7 +8,7 @@ if (process.env.SENTRY_DSN) {
 }
 
 let app = io(port);
-// io.set('origins', 'http://yourdomain.com:80');
+app.origins('*:*');
 
 log.setLevel(log.levels.DEBUG);
 
