@@ -3,8 +3,7 @@ module.exports = function (app, socket, database) {
 
   let rewards = [
     'puppy',
-    'kitty',
-    'theme'
+    'kitty'
   ];
 
   function getConnectedUsers () {
@@ -13,12 +12,12 @@ module.exports = function (app, socket, database) {
 
   function incrementConnectedUsers () {
     controller.incrementConnectedUsers();
-    app.sockets.emit('counterStatus', controller.getConnectedUsers());
+    app.sockets.emit('connectedUsers', controller.getConnectedUsers());
   }
 
   function decrementConnectedUsers () {
     controller.decrementConnectedUsers();
-    app.sockets.emit('counterStatus', controller.getConnectedUsers());
+    app.sockets.emit('connectedUsers', controller.getConnectedUsers());
   }
 
   function getCounter () {
@@ -30,7 +29,8 @@ module.exports = function (app, socket, database) {
   function incrementCounter () {
     controller.incrementCounter().then((result) => {
       app.sockets.emit('counterStatus', result.counter);
-      if (result.reward) {
+      // if (result.reward) {
+      if (true) {
         socket.emit('reward', rewards[Math.floor(Math.random() * rewards.length)]);
       }
     });

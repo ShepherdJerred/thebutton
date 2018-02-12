@@ -8,15 +8,18 @@ module.exports = function (database) {
   let connectedUsers = 0;
 
   let getConnectedUsers = function () {
+    console.log(connectedUsers);
     return connectedUsers;
   };
 
   let incrementConnectedUsers = function () {
     connectedUsers += 1;
+    console.log('C' + connectedUsers);
   };
 
   let decrementConnectedUsers = function () {
     connectedUsers -= 1;
+    console.log('D' + connectedUsers);
   };
 
   let getCounter = async function getCounter () {
