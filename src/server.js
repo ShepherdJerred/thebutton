@@ -14,6 +14,9 @@ if (process.env.CLEARDB_DATABASE_URL) {
   databaseConfig = require('../config/database');
 }
 
-database(databaseConfig).then(connection => {
-  sockets(connection, port);
+// TODO remove nested promise, use async/await
+database(databaseConfig).then(pool => {
+  pool.getConnection().then(connection => {
+    sockets(connection, port);
+  });
 });

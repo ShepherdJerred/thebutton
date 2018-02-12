@@ -4,6 +4,7 @@ module.exports = function (app, socket, database) {
   let rewards = [
     'puppy',
     'kitty'
+    // theme
   ];
 
   function getConnectedUsers () {
@@ -29,8 +30,7 @@ module.exports = function (app, socket, database) {
   function incrementCounter () {
     controller.incrementCounter().then((result) => {
       app.sockets.emit('counterStatus', result.counter);
-      // if (result.reward) {
-      if (true) {
+      if (result.reward) {
         socket.emit('reward', rewards[Math.floor(Math.random() * rewards.length)]);
       }
     });
