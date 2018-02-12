@@ -1,6 +1,11 @@
 const io = require('socket.io');
 const log = require('loglevel');
 const port = process.env.PORT || 8080;
+const Raven = require('raven');
+
+if (process.env.SENTRY_DSN) {
+  Raven.config(process.env.SENTRY_DSN).install();
+}
 
 let app = io(port);
 log.setLevel(log.levels.DEBUG);
