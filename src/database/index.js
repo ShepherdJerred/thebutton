@@ -8,7 +8,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 module.exports = (async function () {
-  const connection = await mysql.createConnection(mysqlConfig);
+  const connection = await mysql.createPool(mysqlConfig);
 
   let tables = [
     'CREATE TABLE IF NOT EXISTS setting (setting_key VARCHAR(255) UNIQUE, setting_value VARCHAR(255));',
