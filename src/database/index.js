@@ -1,13 +1,6 @@
 const mysql = require('mysql2/promise');
 
-let mysqlConfig;
-if (process.env.NODE_ENV === 'production') {
-  mysqlConfig = process.env.CLEARDB_DATABASE_URL;
-} else {
-  mysqlConfig = require.main.require('../config/database.js');
-}
-
-module.exports = (async function () {
+module.exports = async function (mysqlConfig) {
   const connection = await mysql.createConnection(mysqlConfig);
 
   let tables = [
@@ -20,4 +13,4 @@ module.exports = (async function () {
   }
 
   return connection;
-})();
+};

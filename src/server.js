@@ -1,21 +1,19 @@
-const io = require('socket.io');
-const log = require('loglevel');
-const port = process.env.PORT || 8080;
-const Raven = require('raven');
+const database = require('./database/index');
+const loglevel = require('loglevel');
+const sockets = require('./sockets');
+require('./sentry');
 
-if (process.env.SENTRY_DSN) {
-  Raven.config(process.env.SENTRY_DSN).install();
+loglevel.setLevel(loglevel.levels.DEBUG);
+
+let port = process.env.PORT || 8080;
+
+let databaseConfig;
+if (process.env.CLEARDB_DATABASE_URL) {
+  databaseConfig = process.env.CLEARDB_DATABASE_URL;
+} else {
+  databaseConfig = require('../config/database');
 }
 
-let app = io(port);
-app.origins('*:*');
-
-log.setLevel(log.levels.DEBUG);
-
-require('./database/index').then((connection) => {
-  app.on('connection', socket => {
-    require('./sockets/events')(app, socket, connection);
-  });
-
-  log.info('socket.io is listening on port ' + port);
+database(databaseConfig).then(connection => {
+  sockets(connection, port);
 });
