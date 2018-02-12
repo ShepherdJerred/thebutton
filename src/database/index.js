@@ -2,7 +2,7 @@ const mysql = require('mysql2/promise');
 
 let mysqlConfig;
 if (process.env.NODE_ENV === 'production') {
-  mysqlConfig = process.env.CLEARDB_DB_URL;
+  mysqlConfig = process.env.CLEARDB_DATABASE_URL;
 } else {
   mysqlConfig = require.main.require('../config/database.js');
 }
