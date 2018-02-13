@@ -2,24 +2,22 @@ const Counter = require.main.require('./models/counter');
 const Setting = require.main.require('./models/setting');
 const uuid = require('uuid/v4');
 
-module.exports = function (database) {
-  const counterDao = require.main.require('./database/dao/counterDao')(database);
-  const settingDao = require.main.require('./database/dao/settingDao')(database);
-  let connectedUsers = 0;
+let connectedUsers = 0;
+
+module.exports = function (connection) {
+  const counterDao = require.main.require('./database/dao/counterDao')(connection);
+  const settingDao = require.main.require('./database/dao/settingDao')(connection);
 
   let getConnectedUsers = function () {
-    console.log(connectedUsers);
     return connectedUsers;
   };
 
   let incrementConnectedUsers = function () {
     connectedUsers += 1;
-    console.log('C' + connectedUsers);
   };
 
   let decrementConnectedUsers = function () {
     connectedUsers -= 1;
-    console.log('D' + connectedUsers);
   };
 
   let getCounter = async function getCounter () {
