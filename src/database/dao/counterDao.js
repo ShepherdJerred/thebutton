@@ -3,7 +3,7 @@ const Counter = require.main.require('./models/counter');
 module.exports = function (connection) {
   async function select (uuid) {
     const [rows] = await connection.execute('SELECT * FROM counter WHERE counter_uuid = ?;', [uuid]);
-    if (rows) {
+    if (rows.length) {
       return new Counter(uuid, rows[0]['current_value'], rows[0]['max_value']);
     } else {
       return null;
