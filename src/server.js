@@ -16,7 +16,5 @@ if (process.env.CLEARDB_DATABASE_URL) {
 
 // TODO remove nested promise, use async/await
 database(databaseConfig).then(pool => {
-  pool.getConnection().then(connection => {
-    sockets(connection, port);
-  });
+  sockets(pool, port);
 });
